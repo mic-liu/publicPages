@@ -1,104 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSOフィジビリティ</title>
+    <link rel="icon" href="data:image/x-icon;," type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <style>
+      #callNative {
+        width: 100%;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSOフィジビリティ</title>
-  <link rel="icon" href="data:image/x-icon;," type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-  <style>
-    #callNative {
-      width: 100%;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="card m-3">
-    <div class="card-header">UserAgent</div>
-    <div class="card-body">
-      <p class="card-text">
-        <label class="text-break" id="userAgent"></label>
-      </p>
+  <body>
+    <div class="card m-3">
+      <div class="card-header">UserAgent</div>
+      <div class="card-body">
+        <p class="card-text">
+          <label class="text-break" id="userAgent"></label>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="card m-3">
-    <div class="card-header">Cookie</div>
-    <div class="card-body">
-      <p class="card-text">
-        <label class="text-break" id="cookie"></label>
-      </p>
+    <div class="card m-3">
+      <div class="card-header">Cookie</div>
+      <div class="card-body">
+        <p class="card-text">
+          <label class="text-break" id="cookie"></label>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="card m-3">
-    <div class="card-header">SessionStorage</div>
-    <div class="card-body">
-      <p class="card-text">
-        <label class="text-break" id="sessionStorage"></label>
-      </p>
+    <div class="card m-3">
+      <div class="card-header">SessionStorage</div>
+      <div class="card-body">
+        <p class="card-text">
+          <label class="text-break" id="sessionStorage"></label>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="card m-3">
-    <div class="card-header">Call App Native Function</div>
-    <div class="card-body">
-      <input id="webToURL" type="text" class="form-control" placeholder="WebTo URL" />
-      <button id="callNative" type="button" class="btn btn-primary mt-2">
-        Execute Func
-      </button>
+    <div class="card m-3">
+      <div class="card-header">Call App Native Function</div>
+      <div class="card-body">
+        <input
+          id="webToURL"
+          type="text"
+          class="form-control"
+          placeholder="WebTo URL"
+        />
+        <button id="callNative" type="button" class="btn btn-primary mt-2">
+          Execute Func
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="card m-3">
-    <div class="card-header">Call App Native Function</div>
-    <div class="card-body">
-      <a target="_blank" href="line://ti/p/@xnc7972n?oat_referrer=PROFILE">Link</a>
+    <div class="card m-3">
+      <div class="card-header">Call App Native Function</div>
+      <div class="card-body">
+        <a target="_blank" href="line://ti/p/@xnc7972n?oat_referrer=PROFILE"
+          >Link</a
+        >
+      </div>
     </div>
-  </div>
 
-  <div class="m-3"></div>
-  <script>
-    window.onload = function () {
-      document.getElementById("userAgent").innerHTML = navigator.userAgent;
-      document.getElementById("cookie").innerHTML = document.cookie;
-      var token = sessionStorage.getItem("token");
-      var authorization = sessionStorage.getItem("Authorization");
-      document.getElementById("sessionStorage").innerHTML =
-        "token:" + token + "<br>" + "Authorization:" + authorization;
+    <div class="m-3"></div>
+    <script>
+      window.onload = function () {
+        document.getElementById("userAgent").innerHTML = navigator.userAgent;
+        document.getElementById("cookie").innerHTML = document.cookie;
+        var token = sessionStorage.getItem("token");
+        var authorization = sessionStorage.getItem("Authorization");
+        document.getElementById("sessionStorage").innerHTML =
+          "token:" + token + "<br>" + "Authorization:" + authorization;
 
-      document.getElementById("callNative").onclick = function () {
-        callNativeMethod("WEB_TO", [
-          document.getElementById("webToURL").value,
-        ]);
+        document.getElementById("callNative").onclick = function () {
+          const webToURL = document.getElementById("webToURL").value;
+          // UserAgentで判断
+          if (navigator.userAgent.startsWith("MobWV")) {
+            // WebTo可能なUserAgentの場合
+            callNativeMethod("WEB_TO", [webToURL]);
+          } else {
+            window.open(webToURL, "_blank");
+          }
+        };
       };
-    };
 
-    function callNativeMethod(type, data) {
-      if (typeof kony === "undefined" && typeof voltmx === "undefined") {
-        return;
-      } else if (typeof kony === "undefined" && typeof voltmx !== "undefined") {
-        kony = voltmx;
+      function callNativeMethod(type, data) {
+        if (typeof voltmx === "undefined") {
+          // voltmxの定義がない場合
+          return;
+        }
+        var arr = [];
+        arr.push(type);
+        if (Array.isArray(data)) {
+          data.forEach((item) => {
+            arr.push(item);
+          });
+        }
+
+        voltmx.evaluateJavaScriptInNativeContext(
+          "WebViewCallbackFunc",
+          JSON.stringify(arr)
+        );
       }
-      var arr = [];
-      arr.push(type);
-      if (Array.isArray(data)) {
-        data.forEach((item) => {
-          arr.push(item);
-        });
-      }
-
-      kony.evaluateJavaScriptInNativeContext(
-        "WebViewCallbackFunc",
-        JSON.stringify(arr)
-      );
-
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
