@@ -50,6 +50,7 @@
     <div class="card m-3">
       <div class="card-header">Call App Native Function</div>
       <div class="card-body">
+        <p class="card-text">WebViewからNativeアプリのFuncを呼び出す</p>
         <input
           id="webToURL"
           type="text"
@@ -57,15 +58,11 @@
           placeholder="WebTo URL"
         />
         <button id="callNative" type="button" class="btn btn-primary mt-2">
-          Execute Func
+          Call With WebToURL
         </button>
-      </div>
-    </div>
-
-    <div class="card m-3">
-      <div class="card-header">Call App Native Function</div>
-      <div class="card-body">
-        <a target="_blank" href="https://line.me/R/">「https://line.me/R/」でLINEを起動</a>
+        <button id="callNativeLINE" type="button" class="btn btn-primary mt-2">
+          「https://line.me/R/」でLINEを起動
+        </button>
       </div>
     </div>
 
@@ -78,6 +75,10 @@
         var authorization = sessionStorage.getItem("Authorization");
         document.getElementById("sessionStorage").innerHTML =
           "token:" + token + "<br>" + "Authorization:" + authorization;
+
+        document.getElementById("callNativeLINE").onclick = function () {
+            callNativeMethod("WEB_TO", ["https://line.me/R/"]);
+        };
 
         document.getElementById("callNative").onclick = function () {
           const webToURL = document.getElementById("webToURL").value;
