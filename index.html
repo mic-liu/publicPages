@@ -74,10 +74,10 @@
       window.onload = function () {
         document.getElementById("userAgent").innerHTML = navigator.userAgent;
         document.getElementById("cookie").innerHTML = document.cookie;
-        var token = sessionStorage.getItem("token");
-        var authorization = sessionStorage.getItem("Authorization");
+        var token = sessionStorage.getItem("SFC_CONTROL_INFO");
+        var authorization = sessionStorage.getItem("token");
         document.getElementById("sessionStorage").innerHTML =
-          "token:" + token + "<br>" + "Authorization:" + authorization;
+          "SFC_CONTROL_INFO(CSRF):" + token + "<br>" + "token(JWT):" + authorization;
 
         document.getElementById("callNativeLINE").onclick = function () {
             callNativeMethod("WEB_TO", ["https://line.me/R/"]);
