@@ -37,9 +37,6 @@
         <p class="card-text">
           <label class="text-break" id="cookie"></label>
         </p>
-        <div class="d-flex justify-content-end">
-          <a class="btn btn-primary btn-sm" href="second.html">SecondPage</a>
-        </div>
       </div>
     </div>
 
@@ -53,25 +50,6 @@
       </div>
     </div>
 
-    <div class="card m-3">
-      <div class="card-header">Call App Native Function</div>
-      <div class="card-body">
-        <p class="card-text">WebViewにて入力したURLをNativeブラウザから開く</p>
-        <input
-          id="webToURL"
-          type="text"
-          class="form-control"
-          placeholder="WebTo URL"
-        />
-        <button id="callNative" type="button" class="btn btn-primary mt-2">
-          Call With WebToURL
-        </button>
-        <button id="callNativeLINE" type="button" class="btn btn-primary mt-2">
-          「https://line.me/R/」でLINEを起動
-        </button>
-      </div>
-    </div>
-
     <div class="m-3"></div>
     <script>
       window.onload = function () {
@@ -81,41 +59,7 @@
         var authorization = sessionStorage.getItem("token");
         document.getElementById("sessionStorage").innerHTML =
           "SFC_CONTROL_INFO(CSRF):" + token + "<br>" + "token(JWT):" + authorization;
-
-        document.getElementById("callNativeLINE").onclick = function () {
-            callNativeMethod("WEB_TO", ["https://line.me/R/"]);
-        };
-
-        document.getElementById("callNative").onclick = function () {
-          const webToURL = document.getElementById("webToURL").value;
-          // UserAgentで判断
-          if (navigator.userAgent.startsWith("MobWV")) {
-            // WebTo可能なUserAgentの場合
-            callNativeMethod("WEB_TO", [webToURL]);
-          } else {
-            window.open(webToURL, "_blank");
-          }
-        };
       };
-
-      function callNativeMethod(type, data) {
-        if (typeof voltmx === "undefined") {
-          // voltmxの定義がない場合
-          return;
-        }
-        var arr = [];
-        arr.push(type);
-        if (Array.isArray(data)) {
-          data.forEach((item) => {
-            arr.push(item);
-          });
-        }
-
-        voltmx.evaluateJavaScriptInNativeContext(
-          "WebViewCallbackFunc",
-          JSON.stringify(arr)
-        );
-      }
     </script>
   </body>
 </html>
