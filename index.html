@@ -32,7 +32,7 @@
         <p class="card-text">
           <label class="text-break" id="cookie"></label>
         </p>
-        <div class="d-flex justify-content-end gap-2">
+        <div class="d-flex align-content-stretch flex-wrap gap-2">
           <a class="btn btn-primary btn-sm" href="second.html">SecondPage</a>
           <a
             class="btn btn-primary btn-sm"
@@ -65,11 +65,11 @@
           class="form-control"
           placeholder="WebTo URL"
         />
-        <div class="d-flex justify-content-end mt-2">
+        <div class="d-flex align-content-stretch flex-wrap gap-2 mt-2">
           <button
             id="callNative"
             type="button"
-            class="btn btn-primary btn-sm me-2"
+            class="btn btn-primary btn-sm"
           >
             Call With WebToURL
           </button>
@@ -88,8 +88,8 @@
       <div class="card-header">Form Transfer</div>
       <div class="card-body">
         <p class="card-text">WebViewを閉じて対象画面へ遷移</p>
-        <div class="d-flex justify-content-end">
-          <button id="frmMain" class="btn btn-primary btn-sm me-2" onclick="callNativeMethod('FORM_TRANSFER', ['frmMain'])">
+        <div class="d-flex align-content-stretch flex-wrap gap-2">
+          <button id="frmMain" class="btn btn-primary btn-sm" onclick="callNativeMethod('FORM_TRANSFER', ['frmMain'])">
             銀行ホーム（frmMain）
           </button>
           <button id="frmAssetSummary" class="btn btn-primary btn-sm" onclick="callNativeMethod('FORM_TRANSFER', ['frmAssetSummary'])">
