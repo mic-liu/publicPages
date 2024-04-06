@@ -12,11 +12,6 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <style>
-      #callNative,#callNativeLINE {
-        width: 100%;
-      }
-    </style>
   </head>
 
   <body>
@@ -39,7 +34,11 @@
         </p>
         <div class="d-flex justify-content-end gap-2">
           <a class="btn btn-primary btn-sm" href="second.html">SecondPage</a>
-          <a class="btn btn-primary btn-sm" href="https://www.sbishinseibank.co.jp">sbishinseibank.co.jp</a>
+          <a
+            class="btn btn-primary btn-sm"
+            href="https://www.sbishinseibank.co.jp"
+            >sbishinseibank.co.jp</a
+          >
         </div>
       </div>
     </div>
@@ -47,7 +46,9 @@
     <div class="card m-3">
       <div class="card-header">SessionStorage</div>
       <div class="card-body">
-        <h5 class="card-title">JWTトークン(Authorization)とCSRFトークン(token)</h5>
+        <h5 class="card-title">
+          JWTトークン(Authorization)とCSRFトークン(token)
+        </h5>
         <p class="card-text">
           <label class="text-break" id="sessionStorage"></label>
         </p>
@@ -64,12 +65,37 @@
           class="form-control"
           placeholder="WebTo URL"
         />
-        <button id="callNative" type="button" class="btn btn-primary mt-2">
-          Call With WebToURL
-        </button>
-        <button id="callNativeLINE" type="button" class="btn btn-primary mt-2">
-          「https://line.me/R/」でLINEを起動
-        </button>
+        <div class="d-flex justify-content-end mt-2">
+          <button
+            id="callNative"
+            type="button"
+            class="btn btn-primary btn-sm me-2"
+          >
+            Call With WebToURL
+          </button>
+          <button
+            id="callNativeLINE"
+            type="button"
+            class="btn btn-primary btn-sm"
+          >
+            「https://line.me/R/」でLINEを起動
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-header">Form Transfer</div>
+      <div class="card-body">
+        <p class="card-text">WebViewを閉じて対象画面へ遷移</p>
+        <div class="d-flex justify-content-end">
+          <button id="frmMain" class="btn btn-primary btn-sm me-2" onclick="callNativeMethod('FORM_TRANSFER', ['frmMain'])">
+            銀行ホーム（frmMain）
+          </button>
+          <button id="frmAssetSummary" class="btn btn-primary btn-sm" onclick="callNativeMethod('FORM_TRANSFER', ['frmAssetSummary'])">
+            資産情報ホーム（frmAssetSummary）
+          </button>
+        </div>
       </div>
     </div>
 
@@ -81,10 +107,14 @@
         var token = sessionStorage.getItem("SFC_CONTROL_INFO");
         var authorization = sessionStorage.getItem("token");
         document.getElementById("sessionStorage").innerHTML =
-          "SFC_CONTROL_INFO(CSRF):" + token + "<br>" + "token(JWT):" + authorization;
+          "SFC_CONTROL_INFO(CSRF):" +
+          token +
+          "<br>" +
+          "token(JWT):" +
+          authorization;
 
         document.getElementById("callNativeLINE").onclick = function () {
-            callNativeMethod("WEB_TO", ["https://line.me/R/"]);
+          callNativeMethod("WEB_TO", ["https://line.me/R/"]);
         };
 
         document.getElementById("callNative").onclick = function () {
