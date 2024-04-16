@@ -107,6 +107,7 @@
         document.getElementById("cookie").innerHTML = document.cookie;
         var token = sessionStorage.getItem("SFC_CONTROL_INFO");
         var authorization = sessionStorage.getItem("token");
+        alert(authorization);
         document.getElementById("sessionStorage").innerHTML =
           "SFC_CONTROL_INFO(CSRF):" +
           token +
