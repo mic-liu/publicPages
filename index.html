@@ -66,11 +66,7 @@
           placeholder="WebTo URL"
         />
         <div class="d-flex align-content-stretch flex-wrap gap-2 mt-2">
-          <button
-            id="callNative"
-            type="button"
-            class="btn btn-primary btn-sm"
-          >
+          <button id="callNative" type="button" class="btn btn-primary btn-sm">
             Call With WebToURL
           </button>
           <button
@@ -89,10 +85,18 @@
       <div class="card-body">
         <p class="card-text">WebViewを閉じて対象画面へ遷移</p>
         <div class="d-flex align-content-stretch flex-wrap gap-2">
-          <button id="frmMain" class="btn btn-primary btn-sm" onclick="callNativeMethod('FORM_TRANSFER', ['frmMain'])">
+          <button
+            id="frmMain"
+            class="btn btn-primary btn-sm"
+            onclick="callNativeMethod('FORM_TRANSFER', ['frmMain'])"
+          >
             銀行ホーム（frmMain）
           </button>
-          <button id="frmAssetSummary" class="btn btn-primary btn-sm" onclick="callNativeMethod('FORM_TRANSFER', ['frmAssetSummary'])">
+          <button
+            id="frmAssetSummary"
+            class="btn btn-primary btn-sm"
+            onclick="callNativeMethod('FORM_TRANSFER', ['frmAssetSummary'])"
+          >
             資産情報ホーム（frmAssetSummary）
           </button>
         </div>
@@ -101,7 +105,14 @@
 
     <div class="m-3"></div>
     <script>
-      window.onload = function () {
+      if (document.readyState === "loading") {
+        // Loading hasn't finished yet
+        document.addEventListener("DOMContentLoaded", showInfo);
+      } else {
+        // `DOMContentLoaded` has already fired
+        showInfo();
+      }
+      function showInfo() {
         document.getElementById("userAgent").innerHTML = navigator.userAgent;
         document.getElementById("cookie").innerHTML = document.cookie;
         var token = sessionStorage.getItem("SFC_CONTROL_INFO");
@@ -128,7 +139,7 @@
             window.open(webToURL, "_blank");
           }
         };
-      };
+      }
 
       function callNativeMethod(type, data) {
         if (typeof voltmx === "undefined") {
