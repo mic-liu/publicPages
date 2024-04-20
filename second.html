@@ -13,7 +13,8 @@
       crossorigin="anonymous"
     />
     <style>
-      #callNative,#callNativeLINE {
+      #callNative,
+      #callNativeLINE {
         width: 100%;
       }
     </style>
@@ -21,7 +22,9 @@
 
   <body>
     <div class="m-3">
-      <a class="btn btn-primary btn-sm" href="javascript:history.back();">Back</a>
+      <a class="btn btn-primary btn-sm" href="javascript:history.back();"
+        >Back</a
+      >
     </div>
     <div class="card m-3">
       <div class="card-header">UserAgent</div>
@@ -46,7 +49,9 @@
     <div class="card m-3">
       <div class="card-header">SessionStorage</div>
       <div class="card-body">
-        <h5 class="card-title">JWTトークン(Authorization)とCSRFトークン(token)</h5>
+        <h5 class="card-title">
+          JWTトークン(Authorization)とCSRFトークン(token)
+        </h5>
         <p class="card-text">
           <label class="text-break" id="sessionStorage"></label>
         </p>
@@ -55,14 +60,25 @@
 
     <div class="m-3"></div>
     <script>
-      window.onload = function () {
+      if (document.readyState === "loading") {
+        // Loading hasn't finished yet
+        document.addEventListener("DOMContentLoaded", showInfo);
+      } else {
+        // `DOMContentLoaded` has already fired
+        showInfo();
+      }
+      function showInfo() {
         document.getElementById("userAgent").innerHTML = navigator.userAgent;
         document.getElementById("cookie").innerHTML = document.cookie;
         var token = sessionStorage.getItem("SFC_CONTROL_INFO");
         var authorization = sessionStorage.getItem("token");
         document.getElementById("sessionStorage").innerHTML =
-          "SFC_CONTROL_INFO(CSRF):" + token + "<br>" + "token(JWT):" + authorization;
-      };
+          "SFC_CONTROL_INFO(CSRF):" +
+          token +
+          "<br>" +
+          "token(JWT):" +
+          authorization;
+      }
     </script>
   </body>
 </html>
