@@ -20,35 +20,20 @@
       <div class="card-header">Cookie</div>
       <div class="card-body">
         <div>
-          <h5 class="card-title border-bottom">SetCookie1</h5>
+          <h5 class="card-title border-bottom">_sb.pcd</h5>
           <p class="card-text">
-            <label class="text-break" id="setcookie1"></label>
+            <label class="text-break" id="_sb.pcd"></label>
           </p>
         </div>
 
         <div class="mt-2">
-          <h5 class="card-title border-bottom">SetCookie2</h5>
+          <h5 class="card-title border-bottom">JSESSIONID</h5>
           <p class="card-text">
-            <label class="text-break" id="setcookie2"></label>
+            <label class="text-break" id="JSESSIONID"></label>
           </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card m-3">
-      <div class="card-header">SessionStorage</div>
-      <div class="card-body">
-        <div>
-          <h5 class="card-title border-bottom">token</h5>
+          <h5 class="card-title border-bottom">AWSELB</h5>
           <p class="card-text">
-            <label class="text-break" id="token"></label>
-          </p>
-        </div>
-
-        <div class="mt-2">
-          <h5 class="card-title border-bottom">Authorization</h5>
-          <p class="card-text">
-            <label class="text-break" id="authorization"></label>
+            <label class="text-break" id="AWSELB"></label>
           </p>
         </div>
       </div>
@@ -97,8 +82,9 @@
     if (WEBTO_FORWARDS.includes(forward)) {
       document.getElementById("webtoDiv").classList.remove("d-none");
       document.getElementById("webviewDiv").classList.add("d-none");
-      document.getElementById("setcookie1").textContent = getURLParam("SetCookie1");
-      document.getElementById("setcookie2").textContent = getURLParam("SetCookie2");
+      document.getElementById("_sb.pcd").textContent = getURLParam("_sb.pcd");
+      document.getElementById("JSESSIONID").textContent = getURLParam("JSESSIONID");
+      document.getElementById("AWSELB").textContent = getURLParam("AWSELB");
       document.getElementById("token").textContent = getURLParam("token");
       document.getElementById("authorization").textContent = getURLParam("Authorization");
     } else if (WEBVIEW_FORWARDS.includes(forward)) {
