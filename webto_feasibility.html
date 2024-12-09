@@ -17,6 +17,23 @@
       WebToのURLから取得したパラメータを以下に表示します。
     </p>
     <div class="card m-3">
+      <div class="card-header">SessionStorage</div>
+      <div class="card-body">
+        <div>
+          <h5 class="card-title border-bottom">token</h5>
+          <p class="card-text">
+            <label class="text-break" id="token"></label>
+          </p>
+
+          <h5 class="card-title border-bottom">Authorization</h5>
+          <p class="card-text">
+            <label class="text-break" id="Authorization"></label>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <div class="card m-3">
       <div class="card-header">Cookie</div>
       <div class="card-body">
         <div>
@@ -24,9 +41,7 @@
           <p class="card-text">
             <label class="text-break" id="_sb.pcd"></label>
           </p>
-        </div>
 
-        <div class="mt-2">
           <h5 class="card-title border-bottom">JSESSIONID</h5>
           <p class="card-text">
             <label class="text-break" id="JSESSIONID"></label>
@@ -36,6 +51,7 @@
             <label class="text-break" id="AWSELB"></label>
           </p>
         </div>
+
       </div>
     </div>
 
@@ -86,7 +102,7 @@
       document.getElementById("JSESSIONID").textContent = getURLParam("JSESSIONID");
       document.getElementById("AWSELB").textContent = getURLParam("AWSELB");
       document.getElementById("token").textContent = getURLParam("token");
-      document.getElementById("authorization").textContent = getURLParam("Authorization");
+      document.getElementById("Authorization").textContent = getURLParam("Authorization");
     } else if (WEBVIEW_FORWARDS.includes(forward)) {
       document.getElementById("webtoDiv").classList.add("d-none");
       document.getElementById("webviewDiv").classList.remove("d-none");
