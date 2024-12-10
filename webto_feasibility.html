@@ -7,6 +7,8 @@
   <title>WebTo Feasibility</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <script src="./aes.js"></script>
+    <script src="./UtilEncryption.js"></script>
 </head>
 
 <body>
@@ -17,24 +19,34 @@
       WebToのURLから取得したパラメータを以下に表示します。
     </p>
     <div class="card m-3">
-      <div class="card-header">SessionStorage</div>
+      <div class="card-header">SessionStorage Items</div>
       <div class="card-body">
         <div>
           <h5 class="card-title border-bottom">token</h5>
           <p class="card-text">
+            <p>【暗号化】</p>
             <label class="text-break" id="token"></label>
+          </p>
+          <p class="card-text">
+            <p>【復号化】</p>
+            <label class="text-break" id="token-dec"></label>
           </p>
 
           <h5 class="card-title border-bottom">Authorization</h5>
           <p class="card-text">
+            <p>【暗号化】</p>
             <label class="text-break" id="Authorization"></label>
+          </p>
+          <p class="card-text">
+            <p>【復号化】</p>
+            <label class="text-break" id="Authorization-dec"></label>
           </p>
         </div>
 
       </div>
     </div>
     <div class="card m-3">
-      <div class="card-header">Cookie</div>
+      <div class="card-header">Cookie Items</div>
       <div class="card-body">
         <div>
           <h5 class="card-title border-bottom">_sb.pcd</h5>
@@ -101,8 +113,14 @@
       document.getElementById("_sb.pcd").textContent = getURLParam("_sb.pcd");
       document.getElementById("JSESSIONID").textContent = getURLParam("JSESSIONID");
       document.getElementById("AWSELB").textContent = getURLParam("AWSELB");
-      document.getElementById("token").textContent = getURLParam("token");
-      document.getElementById("Authorization").textContent = getURLParam("Authorization");
+
+      var token = getURLParam("token");
+      document.getElementById("token").textContent = token;
+      document.getElementById("token-dec").textContent = UtilEncryption.decryptAES(decodeURIComponent(token));
+
+      var authorization = getURLParam("Authorization");
+      document.getElementById("Authorization").textContent = authorization;
+      document.getElementById("Authorization-dec").textContent = UtilEncryption.decryptAES(decodeURIComponent(authorization));
     } else if (WEBVIEW_FORWARDS.includes(forward)) {
       document.getElementById("webtoDiv").classList.add("d-none");
       document.getElementById("webviewDiv").classList.remove("d-none");
