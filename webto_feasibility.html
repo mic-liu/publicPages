@@ -24,12 +24,7 @@
         <div>
           <h5 class="card-title border-bottom">token</h5>
           <p class="card-text">
-            <p>【暗号化】</p>
             <label class="text-break" id="token"></label>
-          </p>
-          <p class="card-text">
-            <p>【復号化】</p>
-            <label class="text-break" id="token-dec"></label>
           </p>
 
           <h5 class="card-title border-bottom">Authorization</h5>
@@ -56,11 +51,21 @@
 
           <h5 class="card-title border-bottom">JSESSIONID</h5>
           <p class="card-text">
+            <p>【暗号化】</p>
             <label class="text-break" id="JSESSIONID"></label>
+          </p>
+          <p class="card-text">
+            <p>【復号化】</p>
+            <label class="text-break" id="JSESSIONID-dec"></label>
           </p>
           <h5 class="card-title border-bottom">AWSELB</h5>
           <p class="card-text">
+            <p>【暗号化】</p>
             <label class="text-break" id="AWSELB"></label>
+          </p>
+          <p class="card-text">
+            <p>【復号化】</p>
+            <label class="text-break" id="AWSELB-dec"></label>
           </p>
         </div>
 
@@ -111,12 +116,17 @@
       document.getElementById("webtoDiv").classList.remove("d-none");
       document.getElementById("webviewDiv").classList.add("d-none");
       document.getElementById("_sb.pcd").textContent = getURLParam("_sb.pcd");
-      document.getElementById("JSESSIONID").textContent = getURLParam("JSESSIONID");
-      document.getElementById("AWSELB").textContent = getURLParam("AWSELB");
+
+      var JSESSIONID = getURLParam("JSESSIONID");;
+      document.getElementById("JSESSIONID").textContent = JSESSIONID;
+      document.getElementById("JSESSIONID-dec").textContent = UtilEncryption.decryptAES(decodeURIComponent(JSESSIONID));
+
+      var AWSELB = getURLParam("AWSELB");
+      document.getElementById("AWSELB").textContent = AWSELB;
+      document.getElementById("AWSELB-dec").textContent = UtilEncryption.decryptAES(decodeURIComponent(AWSELB));
 
       var token = getURLParam("token");
       document.getElementById("token").textContent = token;
-      document.getElementById("token-dec").textContent = UtilEncryption.decryptAES(decodeURIComponent(token));
 
       var authorization = getURLParam("Authorization");
       document.getElementById("Authorization").textContent = authorization;
