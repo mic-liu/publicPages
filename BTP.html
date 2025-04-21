@@ -11,6 +11,9 @@
     <!-- 添加SAP的favicon -->
     <link rel="icon" href="https://www.sap.com/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="./icons/sapbtp180.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.3/html2pdf.bundle.min.js"
+        integrity="sha512-yu5WG6ewBNKx8svICzUA01vozhmiQCVfzjzW40eCHJdsDRaOifh9hPlWBDex5b32gWCzawTp1F3FJz60ps6TnQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         .question-container {
             max-width: 800px;
@@ -105,7 +108,7 @@
 </head>
 
 <body>
-    <div class="question-container">
+    <div class="question-container" id="question-container">
         <div id="questionCarousel" class="carousel slide">
             <div class="carousel-inner" id="carouselInner">
 
@@ -2239,20 +2242,28 @@
                 <div class="question-card">
                     <h2 class="subtitle">NEW</h2>
                     <div class="question-text">
-                        <p>The customer is looking to use an SAP BTP service to replicate master data objects across connected 
-                            business applications. The service should be based off of the process integration style and the 
-                            integration use case pattern as defined in the SAP Integration Solution Advisory Methodology.</p>
-                        <p>The customer wants to use an SAP BTP service to synchronize the workforce person master data object 
-                            between SAP S/4HANA Cloud and SAP SuccessFactors HXM Suite as part of the Hire to Retire process 
-                            (for cloud deployment). They prefer a service that uses a "hub and spoke" model to enable the 
+                        <p>The customer is looking to use an SAP BTP service to replicate master data objects across
+                            connected
+                            business applications. The service should be based off of the process integration style and
+                            the
+                            integration use case pattern as defined in the SAP Integration Solution Advisory
+                            Methodology.</p>
+                        <p>The customer wants to use an SAP BTP service to synchronize the workforce person master data
+                            object
+                            between SAP S/4HANA Cloud and SAP SuccessFactors HXM Suite as part of the Hire to Retire
+                            process
+                            (for cloud deployment). They prefer a service that uses a "hub and spoke" model to enable
+                            the
                             synchronization.</p>
-                        <p>Which of the following SAP solution should the customer use as the "Placeholder Icon" (see attached 
+                        <p>Which of the following SAP solution should the customer use as the "Placeholder Icon" (see
+                            attached
                             diagram)?</p>
                     </div>
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution74" id="sap-netweaver-master-data-management">
-                            <label for="sap-netweaver-master-data-management">SAP NetWeaver Master Data Management</label>
+                            <label for="sap-netweaver-master-data-management">SAP NetWeaver Master Data
+                                Management</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution74" id="sap-master-data-governance">
@@ -2268,11 +2279,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">NEW</h2>
                     <div class="question-text">
-                        <p>In SAP's Intelligent Enterprise framework, which component leverages machine learning and AI to 
+                        <p>In SAP's Intelligent Enterprise framework, which component leverages machine learning and AI
+                            to
                             enable predictive analytics and automate processes?</p>
                     </div>
                     <div class="options">
@@ -2298,7 +2310,8 @@
                 <div class="question-card">
                     <h2 class="subtitle">NEW</h2>
                     <div class="question-text">
-                        <p>Which component of the SAP Intelligent Enterprise architecture is primarily used for real-time financial 
+                        <p>Which component of the SAP Intelligent Enterprise architecture is primarily used for
+                            real-time financial
                             processing and management?</p>
                     </div>
                     <div class="options">
@@ -2320,11 +2333,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">NEW</h2>
                     <div class="question-text">
-                        <p>Which service in SAP BTP allows for real-time data processing and analytics, integrating data from 
+                        <p>Which service in SAP BTP allows for real-time data processing and analytics, integrating data
+                            from
                             multiple sources?</p>
                     </div>
                     <div class="options">
@@ -2371,17 +2385,18 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">NEW</h2>
                     <div class="question-text">
-                        <p>Which SAP BTP service offers a fully managed environment to develop, deploy, and manage 
+                        <p>Which SAP BTP service offers a fully managed environment to develop, deploy, and manage
                             applications using multiple programming languages and frameworks?</p>
                     </div>
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution79" id="sap-cloud-application-programming-cap">
-                            <label for="sap-cloud-application-programming-cap">SAP Cloud Application Programming (CAP)</label>
+                            <label for="sap-cloud-application-programming-cap">SAP Cloud Application Programming
+                                (CAP)</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution79" id="sap-kyma">
@@ -2405,6 +2420,7 @@
     <div class="fixed-buttons">
         <button class="btn btn-primary" onclick="$('#questionCarousel').carousel('prev')">Previous</button>
         <button class="btn btn-primary ml-2" onclick="$('#questionCarousel').carousel('next')">Next</button>
+        <!-- <button id="downloadPdf" class="btn btn-primary ml-2">Download</button> -->
     </div>
     <!-- 引入Bootstrap JS和依赖 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -2482,6 +2498,13 @@
             }
             return null;
         }
+
+
+        document.querySelector("#downloadPdf").addEventListener("click", () => {
+            const content = document.querySelector("#question-container");
+            const filename = "SAP-Question.pdf";
+            html2pdf(content).save(filename);
+        });
     </script>
 </body>
 
