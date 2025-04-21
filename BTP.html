@@ -43,6 +43,17 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            border-bottom: 1px dotted #ccc;
+            /* 添加点线分割 */
+            padding-bottom: 3px;
+            /* 增加底部内边距 */
+            margin-bottom: 3px;
+            /* 增加底部外边距 */
+        }
+
+        .option:last-child {
+            border-bottom: none;
+            /* 移除最后一个选项的分割线 */
         }
 
         input[type="radio"],
@@ -55,6 +66,7 @@
             cursor: pointer;
             display: inline-block;
             width: calc(100% - 30px);
+            margin-bottom: auto;
         }
 
         .option:hover {
@@ -64,19 +76,26 @@
         .option.correct {
             color: #4CAF50;
             background-color: transparent;
-            border: none;
+            border-bottom: 1px dotted #ccc;
+            /* 添加点线分割 */
+            padding-bottom: 3px;
+            /* 增加底部内边距 */
+            margin-bottom: 3px;
+            /* 增加底部外边距 */
         }
 
         .fixed-buttons {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                background-color: #f8f8f8;
-                padding: 10px 0;
-                text-align: center; /* 确保按钮居中 */
-                display: flex;
-                justify-content: center; /* 使用Flexbox居中对齐 */
-            }
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 10px 0;
+            text-align: center;
+            /* 确保按钮居中 */
+            display: flex;
+            justify-content: center;
+            /* 使用Flexbox居中对齐 */
+        }
     </style>
 </head>
 
@@ -84,12 +103,14 @@
     <div class="question-container">
         <div id="questionCarousel" class="carousel slide">
             <div class="carousel-inner" id="carouselInner">
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_1_image2</h2>
                     <div class="question-text">
-                        <p>A company is struggling with organizing and managing their data. Their data is distributed across
-                            many databases and also very inconsistent. They need harmonized aggregated data to be used as the
+                        <p>A company is struggling with organizing and managing their data. Their data is distributed
+                            across
+                            many databases and also very inconsistent. They need harmonized aggregated data to be used
+                            as the
                             basis of advanced highly summarized prefer to use the latest SAP solutions.</p>
                         <p>Which of the following solutions would you recommend?</p>
                         <p>Please choose the correct answer.</p>
@@ -113,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_1_image_3</h2>
                     <div class="question-text">
@@ -127,7 +148,8 @@
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution2" id="centralize-data" checked>
-                            <label for="centralize-data">Centralize, link, manage, and control data from various systems and
+                            <label for="centralize-data">Centralize, link, manage, and control data from various systems
+                                and
                                 applications</label>
                         </div>
                         <div class="option">
@@ -143,7 +165,8 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_2_image_1</h2>
                     <div class="question-text">
-                        <p>What are the best practices for implementing the SAP Integration Solution Advisory Methodology?</p>
+                        <p>What are the best practices for implementing the SAP Integration Solution Advisory
+                            Methodology?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -158,7 +181,8 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution3" id="limit-budget">
-                            <label for="limit-budget">Limiting budget allocation, reducing training opportunities</label>
+                            <label for="limit-budget">Limiting budget allocation, reducing training
+                                opportunities</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution3" id="ignore-tech">
@@ -166,14 +190,16 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution3" id="reduce-updates">
-                            <label for="reduce-updates">Reducing system updates, limiting stakeholder involvement</label>
+                            <label for="reduce-updates">Reducing system updates, limiting stakeholder
+                                involvement</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_2_image_2</h2>
                     <div class="question-text">
-                        <p>A customer requires a pricing plan for the SAP Integration Suite service with monthly billing in arrears. Which pricing plan would you recommend to the customer?</p>
+                        <p>A customer requires a pricing plan for the SAP Integration Suite service with monthly billing
+                            in arrears. Which pricing plan would you recommend to the customer?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -198,12 +224,18 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_2_image_3</h2>
                     <div class="question-text">
-                        <p>A fit-to-standard analysis determined that the provided SAP Fiori App for SAP S/4HANA Cloud private edition was insufficient based on existing business requirements, and that a new front-end app must be built.</p>
+                        <p>A fit-to-standard analysis determined that the provided SAP Fiori App for SAP S/4HANA Cloud
+                            private edition was insufficient based on existing business requirements, and that a new
+                            front-end app must be built.</p>
                         <p>As a solution architect, you are asked to propose a solution and are told the following:</p>
                         <ul>
-                            <li>The backend logic running on SAP S/4HANA Cloud private edition is sufficient and an appropriate remote API for create, read, update, and delete (CRUD) operations exists.</li>
-                            <li>The front-end app must be able to run on a variety of devices such as mobile phones and tablets.</li>
-                            <li>Front-end app instances must scale up or down automatically based on administrator- provided scaling parameters.</li>
+                            <li>The backend logic running on SAP S/4HANA Cloud private edition is sufficient and an
+                                appropriate remote API for create, read, update, and delete (CRUD) operations exists.
+                            </li>
+                            <li>The front-end app must be able to run on a variety of devices such as mobile phones and
+                                tablets.</li>
+                            <li>Front-end app instances must scale up or down automatically based on administrator-
+                                provided scaling parameters.</li>
                         </ul>
                         <p>Which of the following runtimes would be optimal for the new front-end app?</p>
                         <p>There are 2 correct answers to this question.</p>
@@ -255,7 +287,9 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_3_image_1</h2>
                     <div class="question-text">
-                        <p>You are a solution architect assigned to a customer business transformation project. Which solutions would you recommend the customers adopt to analyze and to optimize their procurement process to exceed industry benchmarks?</p>
+                        <p>You are a solution architect assigned to a customer business transformation project. Which
+                            solutions would you recommend the customers adopt to analyze and to optimize their
+                            procurement process to exceed industry benchmarks?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -311,7 +345,8 @@
                     <div class="options">
                         <div class="option correct">
                             <input type="checkbox" name="solution9" id="ml-tools" checked>
-                            <label for="ml-tools">Provides tools for building and deploying machine learning models</label>
+                            <label for="ml-tools">Provides tools for building and deploying machine learning
+                                models</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution9" id="master-data">
@@ -323,14 +358,16 @@
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution9" id="data-integration" checked>
-                            <label for="data-integration">Facilitates data integration and orchestration across different systems</label>
+                            <label for="data-integration">Facilitates data integration and orchestration across
+                                different systems</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_3_image_4</h2>
                     <div class="question-text">
-                        <p>What are the key components of the SAP Application Extension Methodology Template overview?</p>
+                        <p>What are the key components of the SAP Application Extension Methodology Template overview?
+                        </p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -352,11 +389,12 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_4_image_1</h2>
                     <div class="question-text">
-                        <p>Which SAP BTP service would you use to ensure secure identity management across multiple cloud applications?</p>
+                        <p>Which SAP BTP service would you use to ensure secure identity management across multiple
+                            cloud applications?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -378,11 +416,13 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_4_image_2</h2>
                     <div class="question-text">
-                        <p>Applications on a customer's Marketing subaccount continuously crash due to insufficient memory. At the global account level, what can you use to allocate more memory to the Marketing subaccount?</p>
+                        <p>Applications on a customer's Marketing subaccount continuously crash due to insufficient
+                            memory. At the global account level, what can you use to allocate more memory to the
+                            Marketing subaccount?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -404,11 +444,12 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_4_image_3</h2>
                     <div class="question-text">
-                        <p>Which SAP BTP extensibility types allow the development of side-by-side extensions without modifying the core system?</p>
+                        <p>Which SAP BTP extensibility types allow the development of side-by-side extensions without
+                            modifying the core system?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -430,12 +471,16 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_4_image_4</h2>
                     <div class="question-text">
-                        <p>As a solution architect, you are asked for your opinion on an optimal integration. You are told that the data resides in two (on-premise) and third party APIs. You are also told the following requirements: Periodically read the data from both systems, perform several transformations of the data, and forward the result.</p>
-                        <p>Monitoring is to be done by a dedicated group from IT with SAP products. Maintenance of the integration part has a small budget, limited time, and limited resources</p>
+                        <p>As a solution architect, you are asked for your opinion on an optimal integration. You are
+                            told that the data resides in two (on-premise) and third party APIs. You are also told the
+                            following requirements: Periodically read the data from both systems, perform several
+                            transformations of the data, and forward the result.</p>
+                        <p>Monitoring is to be done by a dedicated group from IT with SAP products. Maintenance of the
+                            integration part has a small budget, limited time, and limited resources</p>
                         <p>Which of the following solutions would you recommend as optimal for the design?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
@@ -450,7 +495,8 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution14" id="process-automation">
-                            <label for="process-automation">SAP Build Process Automation and SAP Solution Manager</label>
+                            <label for="process-automation">SAP Build Process Automation and SAP Solution
+                                Manager</label>
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution14" id="integration-suite" checked>
@@ -458,7 +504,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_5_image_1</h2>
                     <div class="question-text">
@@ -484,11 +530,13 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_5_image_2</h2>
                     <div class="question-text">
-                        <p>In which phase of the SAP Integration Solution Advisory Methodology is a technology mapping of customer use cases also produced (for an example of a solution architecture blueprint, see the attached diagram)?</p>
+                        <p>In which phase of the SAP Integration Solution Advisory Methodology is a technology mapping
+                            of customer use cases also produced (for an example of a solution architecture blueprint,
+                            see the attached diagram)?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -510,7 +558,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_5_image_3</h2>
                     <div class="question-text">
@@ -536,17 +584,19 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_5_image_4</h2>
                     <div class="question-text">
-                        <p>What is one benefit of implementing a well-structured reference architecture for generative AI solutions?</p>
+                        <p>What is one benefit of implementing a well-structured reference architecture for generative
+                            AI solutions?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
                         <div class="option correct">
                             <input type="radio" name="solution18" id="scalability" checked>
-                            <label for="scalability">It ensures scalability, security, and maintainability of AI solutions.</label>
+                            <label for="scalability">It ensures scalability, security, and maintainability of AI
+                                solutions.</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution18" id="marketing">
@@ -562,11 +612,12 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_6_image_1</h2>
                     <div class="question-text">
-                        <p>Which phase of the SAP Data and Analytics Advisory Methodology involves defining the business outcome and solution requirements?</p>
+                        <p>Which phase of the SAP Data and Analytics Advisory Methodology involves defining the business
+                            outcome and solution requirements?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -588,12 +639,16 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_6_image_2</h2>
                     <div class="question-text">
-                        <p>A customer is struggling with organizing and managing the immense amount of data generated by the business. They have been told about several possible solutions that SAP BTP offers; however, they are confused about which solutions they should use.</p>
-                        <p>Their data is highly structured and includes customers, sales orders, and purchase orders. The data needs to be stored for both transactional and reporting purposes in a vector database. The client prefers to use the latest SAP solutions.</p>
+                        <p>A customer is struggling with organizing and managing the immense amount of data generated by
+                            the business. They have been told about several possible solutions that SAP BTP offers;
+                            however, they are confused about which solutions they should use.</p>
+                        <p>Their data is highly structured and includes customers, sales orders, and purchase orders.
+                            The data needs to be stored for both transactional and reporting purposes in a vector
+                            database. The client prefers to use the latest SAP solutions.</p>
                         <p>Which of the following SAP BTP solutions would you recommend?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
@@ -616,11 +671,13 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_6_image_3</h2>
                     <div class="question-text">
-                        <p>To comply with General Data Protection Regulation (GDPR), a company wants to build an application that allows their customer user information from the company's systems. Which SAP BTP service provides the APIs to build the application?</p>
+                        <p>To comply with General Data Protection Regulation (GDPR), a company wants to build an
+                            application that allows their customer user information from the company's systems. Which
+                            SAP BTP service provides the APIs to build the application?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -642,11 +699,15 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_6_image_4</h2>
                     <div class="question-text">
-                        <p>You have been hired as a solution architect and it's your first day on the job. You participate in a meeting discussing the extension to SAP S//4HANA Cloud. In the meeting, you are told: "We have determined that the BusinessPartner (A2X) API in SAP S/4HANA Cloud is insufficient for our needs. Fortune user extensibility. We are currently creating a diagram with the technical building blocks of the extension".</p>
+                        <p>You have been hired as a solution architect and it's your first day on the job. You
+                            participate in a meeting discussing the extension to SAP S//4HANA Cloud. In the meeting, you
+                            are told: "We have determined that the BusinessPartner (A2X) API in SAP S/4HANA Cloud is
+                            insufficient for our needs. Fortune user extensibility. We are currently creating a diagram
+                            with the technical building blocks of the extension".</p>
                         <p>In which SAP Application Extension Methodology phase is the project?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
@@ -665,11 +726,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_7_image_1</h2>
                     <div class="question-text">
-                        <p>Which factors should be considered when planning a DevOps strategy for applications on SAP BTP?</p>
+                        <p>Which factors should be considered when planning a DevOps strategy for applications on SAP
+                            BTP?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -691,7 +753,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_7_image_2</h2>
                     <div class="question-text">
@@ -721,11 +783,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_7_image_3</h2>
                     <div class="question-text">
-                        <p>Which scenarios are best suited for using SAP's Cloud Application Programming Model (CAP) within SAP BTP?</p>
+                        <p>Which scenarios are best suited for using SAP's Cloud Application Programming Model (CAP)
+                            within SAP BTP?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -747,11 +810,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_7_image_4</h2>
                     <div class="question-text">
-                        <p>According to the SAP Integration Solution Advisory Methodology, the integration architect is responsible for which of the following activities?</p>
+                        <p>According to the SAP Integration Solution Advisory Methodology, the integration architect is
+                            responsible for which of the following activities?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -761,23 +825,28 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution26" id="ref-arch">
-                            <label for="ref-arch">Definition, communication, and continuous improvement of an integration reference architecture based on an overall IT strategy</label>
+                            <label for="ref-arch">Definition, communication, and continuous improvement of an
+                                integration reference architecture based on an overall IT strategy</label>
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution26" id="tech-arch" checked>
-                            <label for="tech-arch">Definition of technical integration architectures with a focus on specific integration technologies / services</label>
+                            <label for="tech-arch">Definition of technical integration architectures with a focus on
+                                specific integration technologies / services</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution26" id="impl-ext">
-                            <label for="impl-ext">Implementation and extension of prepackaged integration scenarios</label>
+                            <label for="impl-ext">Implementation and extension of prepackaged integration
+                                scenarios</label>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_8_image_1</h2>
                     <div class="question-text">
-                        <p>A manufacturer wants to discuss the design of a solution that tracks and manages stock availability and movement of goods to ensure that movements are aggregated for reporting purposes and that these reports can be used to optimize stock in the future.</p>
+                        <p>A manufacturer wants to discuss the design of a solution that tracks and manages stock
+                            availability and movement of goods to ensure that movements are aggregated for reporting
+                            purposes and that these reports can be used to optimize stock in the future.</p>
                         <p>Which of the following solutions can be used together to fulfill the requirements?</p>
                         <p>There are 3 correct answers to this question.</p>
                     </div>
@@ -804,18 +873,22 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_8_image_2</h2>
                     <div class="question-text">
-                        <p>A company is decommissioning its legacy ERP system in favor of adopting SAP solutions. The company is not sure which solution to adopt. The company has three main business goals: Maintain several unique business processes. Maintain the solutions with a small budget, and limited time and resources, integrate several non-SAP solutions.</p>
+                        <p>A company is decommissioning its legacy ERP system in favor of adopting SAP solutions. The
+                            company is not sure which solution to adopt. The company has three main business goals:
+                            Maintain several unique business processes. Maintain the solutions with a small budget, and
+                            limited time and resources, integrate several non-SAP solutions.</p>
                         <p>Which combination of solutions should the customer adopt?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution28" id="lean-private">
-                            <label for="lean-private">SAP Lean IX | SAP S/4HANA Cloud private edition | SAP Process Orchestration</label>
+                            <label for="lean-private">SAP Lean IX | SAP S/4HANA Cloud private edition | SAP Process
+                                Orchestration</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution28" id="lean-premise">
@@ -823,15 +896,17 @@
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution28" id="signavio-public" checked>
-                            <label for="signavio-public">SAP Signavio | SAP S/4HANA Cloud public edition | SAP BTP</label>
+                            <label for="signavio-public">SAP Signavio | SAP S/4HANA Cloud public edition | SAP
+                                BTP</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution28" id="signavio-process">
-                            <label for="signavio-process">SAP Signavio | SAP S/4HANA public edition | SAP Process Orchestration</label>
+                            <label for="signavio-process">SAP Signavio | SAP S/4HANA public edition | SAP Process
+                                Orchestration</label>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_8_image_3</h2>
                     <div class="question-text">
@@ -857,11 +932,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_8_image_4</h2>
                     <div class="question-text">
-                        <p>When setting up a pipeline using the SAP Continuous Integration and Delivery service, which of the following services can be triggered automatically after the build results finish?</p>
+                        <p>When setting up a pipeline using the SAP Continuous Integration and Delivery service, which
+                            of the following services can be triggered automatically after the build results finish?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -892,23 +968,27 @@
                     <div class="options">
                         <div class="option correct">
                             <input type="radio" name="solution31" id="platform-agility" checked>
-                            <label for="platform-agility">Platform approach, agility, integration democratization, intelligent life cycle management, analytics</label>
+                            <label for="platform-agility">Platform approach, agility, integration democratization,
+                                intelligent life cycle management, analytics</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution31" id="platform-limited">
-                            <label for="platform-limited">Platform approach, limited scalability, manual integration, static life cycle management, basic reporting</label>
+                            <label for="platform-limited">Platform approach, limited scalability, manual integration,
+                                static life cycle management, basic reporting</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution31" id="custom-isolated">
-                            <label for="custom-isolated">Custom solutions, isolated processes, manual integration, static life cycle management, basic reporting</label>
+                            <label for="custom-isolated">Custom solutions, isolated processes, manual integration,
+                                static life cycle management, basic reporting</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution31" id="basic-limited">
-                            <label for="basic-limited">Basic platform, limited agility, integration fragmentation, static life cycle management, no analytics</label>
+                            <label for="basic-limited">Basic platform, limited agility, integration fragmentation,
+                                static life cycle management, no analytics</label>
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_9_image_2</h2>
                     <div class="question-text">
@@ -934,7 +1014,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_9_image_3</h2>
                     <div class="question-text">
@@ -960,7 +1040,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_9_image_4</h2>
                     <div class="question-text">
@@ -986,11 +1066,12 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_10_image_1</h2>
                     <div class="question-text">
-                        <p>Which deployment options are supported by the ABAP RESTful Application Programming Model (RAP) on SAP BTP?</p>
+                        <p>Which deployment options are supported by the ABAP RESTful Application Programming Model
+                            (RAP) on SAP BTP?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1012,7 +1093,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_10_image_2</h2>
                     <div class="question-text">
@@ -1042,7 +1123,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_10_image_3</h2>
                     <div class="question-text">
@@ -1072,7 +1153,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_10_image_4</h2>
                     <div class="question-text">
@@ -1082,23 +1163,27 @@
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution38" id="security">
-                            <label for="security">To outline security practices for SAP BTP application development</label>
+                            <label for="security">To outline security practices for SAP BTP application
+                                development</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution38" id="integration">
-                            <label for="integration">To provide guidelines for integrating SAP BTP with third-party applications</label>
+                            <label for="integration">To provide guidelines for integrating SAP BTP with third-party
+                                applications</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution38" id="deployment">
-                            <label for="deployment">To standardize the deployment process for SAP BTP applications</label>
+                            <label for="deployment">To standardize the deployment process for SAP BTP
+                                applications</label>
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution38" id="best-practices" checked>
-                            <label for="best-practices">To define best practices for extending SAP applications using SAP BTP</label>
+                            <label for="best-practices">To define best practices for extending SAP applications using
+                                SAP BTP</label>
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_11_image_1</h2>
                     <div class="question-text">
@@ -1128,11 +1213,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_11_image_2</h2>
                     <div class="question-text">
-                        <p>A customer has developed an application. This application crashes occasionally. They want to collect metrics and traces application to crash. They are particularly impressed with the OpenSearch specification from Apache and would like to use it, if one is available.</p>
+                        <p>A customer has developed an application. This application crashes occasionally. They want to
+                            collect metrics and traces application to crash. They are particularly impressed with the
+                            OpenSearch specification from Apache and would like to use it, if one is available.</p>
                         <p>Which SAP BTP services would you recommend?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
@@ -1155,7 +1242,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_11_image_3</h2>
                     <div class="question-text">
@@ -1181,38 +1268,45 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_11_image_4</h2>
                     <div class="question-text">
-                        <p>A company is using SAP BTP to develop a suite of interconnected applications. They need to ensure that data flows seamlessly between the applications while maintaining compliance with global data privacy regulations.</p>
+                        <p>A company is using SAP BTP to develop a suite of interconnected applications. They need to
+                            ensure that data flows seamlessly between the applications while maintaining compliance with
+                            global data privacy regulations.</p>
                         <p>What should be included in the solution architecture?</p>
                         <p>There are 3 correct answers to this question.</p>
                     </div>
                     <div class="options">
                         <div class="option correct">
                             <input type="checkbox" name="solution42" id="compliance" checked>
-                            <label for="compliance">Implement data residency controls using SAP BTP's compliance services</label>
+                            <label for="compliance">Implement data residency controls using SAP BTP's compliance
+                                services</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution42" id="custom-encryption">
-                            <label for="custom-encryption">Develop custom data encryption solutions for each application</label>
+                            <label for="custom-encryption">Develop custom data encryption solutions for each
+                                application</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution42" id="data-custodian" checked>
-                            <label for="data-custodian">Leverage SAP Data Custodian for monitoring data access and compliance</label>
+                            <label for="data-custodian">Leverage SAP Data Custodian for monitoring data access and
+                                compliance</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution42" id="decentralized">
-                            <label for="decentralized">Use a decentralized architecture to manage data in each region separately</label>
+                            <label for="decentralized">Use a decentralized architecture to manage data in each region
+                                separately</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution42" id="integration-suite" checked>
-                            <label for="integration-suite">Use SAP Integration Suite for secure data transfer between applications</label>
+                            <label for="integration-suite">Use SAP Integration Suite for secure data transfer between
+                                applications</label>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_12_image_1</h2>
                     <div class="question-text">
@@ -1238,7 +1332,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_12_image_2</h2>
                     <div class="question-text">
@@ -1264,7 +1358,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_12_image_3</h2>
                     <div class="question-text">
@@ -1278,7 +1372,8 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution45" id="complex-solutions">
-                            <label for="complex-solutions">Developing specific solutions for complex requirements.</label>
+                            <label for="complex-solutions">Developing specific solutions for complex
+                                requirements.</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution45" id="software-projects">
@@ -1290,7 +1385,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_12_image_4</h2>
                     <div class="question-text">
@@ -1316,11 +1411,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_13_image_1</h2>
                     <div class="question-text">
-                        <p>What is a key element in promoting a culture of ownership and engagement within an organization?</p>
+                        <p>What is a key element in promoting a culture of ownership and engagement within an
+                            organization?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1338,15 +1434,17 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution47" id="limiting-access">
-                            <label for="limiting-access">Limiting access to integration tools to senior management</label>
+                            <label for="limiting-access">Limiting access to integration tools to senior
+                                management</label>
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution47" id="encouraging-accountability" checked>
-                            <label for="encouraging-accountability">Encouraging individual accountability and team collaboration</label>
+                            <label for="encouraging-accountability">Encouraging individual accountability and team
+                                collaboration</label>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_13_image_2</h2>
                     <div class="question-text">
@@ -1372,7 +1470,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_13_image_3</h2>
                     <div class="question-text">
@@ -1398,7 +1496,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-card">
                     <h2 class="subtitle">page_13_image_4</h2>
                     <div class="question-text">
@@ -1424,14 +1522,18 @@
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution50" id="define-boundaries" checked>
-                            <label for="define-boundaries">To define boundaries and areas of focus for integration efforts</label>
+                            <label for="define-boundaries">To define boundaries and areas of focus for integration
+                                efforts</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_14_image_1</h2>
                     <div class="question-text">
-                        <p>The finance department is creating a series of reports for their line of business (LOB) users and would like to integrate them. They would like the LOB users to maintain the portal, as opposed to IT. As a solution architect, they come to you to record best fits their needs.</p>
+                        <p>The finance department is creating a series of reports for their line of business (LOB) users
+                            and would like to integrate them. They would like the LOB users to maintain the portal, as
+                            opposed to IT. As a solution architect, they come to you to record best fits their needs.
+                        </p>
                         <p>Which service would you recommend?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
@@ -1457,7 +1559,11 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_14_image_2</h2>
                     <div class="question-text">
-                        <p>Company XYZ, a global firm with 25K+ employees across the geographic locations Europe (headquarters), the USA (procurement), is migrating to SAP S/4HANA using SAP BTP. Each geographic location has dedicated IT staff managing BTP resource quotas. For cost control, the company aims to analyze and optimize the usage and cost of SAP BTP across geographic locations, intending to enhance their SAP BTP Account model structure.</p>
+                        <p>Company XYZ, a global firm with 25K+ employees across the geographic locations Europe
+                            (headquarters), the USA (procurement), is migrating to SAP S/4HANA using SAP BTP. Each
+                            geographic location has dedicated IT staff managing BTP resource quotas. For cost control,
+                            the company aims to analyze and optimize the usage and cost of SAP BTP across geographic
+                            locations, intending to enhance their SAP BTP Account model structure.</p>
                         <p>Which of the following SAP BTP account models are appropriate?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
@@ -1468,23 +1574,30 @@
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution52" id="global-subaccount" checked>
-                            <label for="global-subaccount">One global account with one subaccount for each region</label>
+                            <label for="global-subaccount">One global account with one subaccount for each
+                                region</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution52" id="business-subaccount" checked>
-                            <label for="business-subaccount">One global account for each business function with a corresponding subaccount for that region</label>
+                            <label for="business-subaccount">One global account for each business function with a
+                                corresponding subaccount for that region</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution52" id="business-directory">
-                            <label for="business-directory">One global account for each business function with a corresponding directory for that region</label>
+                            <label for="business-directory">One global account for each business function with a
+                                corresponding directory for that region</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_14_image_3</h2>
                     <div class="question-text">
-                        <p>A company is struggling with organizing and managing the immense amount of data generated by the business. They are considering possible solutions that SAP BTP offers; however, they are confused about which solutions they should use.</p>
-                        <p>A large amount of data is in comma-separated values (CSV) and JavaScript Object Notation (JSON) documents. These documents need to be managed efficiently. The client prefers to use the latest SAP solutions. Which SAP BTP solution would you recommend?</p>
+                        <p>A company is struggling with organizing and managing the immense amount of data generated by
+                            the business. They are considering possible solutions that SAP BTP offers; however, they are
+                            confused about which solutions they should use.</p>
+                        <p>A large amount of data is in comma-separated values (CSV) and JavaScript Object Notation
+                            (JSON) documents. These documents need to be managed efficiently. The client prefers to use
+                            the latest SAP solutions. Which SAP BTP solution would you recommend?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1509,21 +1622,26 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_14_image_4</h2>
                     <div class="question-text">
-                        <p>A customer wants to establish connectivity between applications being executed by end users and the on-premise backend system (SAP S/4HANA). Based on the attached diagram, which combination is necessary to establish the connectivity?</p>
+                        <p>A customer wants to establish connectivity between applications being executed by end users
+                            and the on-premise backend system (SAP S/4HANA). Based on the attached diagram, which
+                            combination is necessary to establish the connectivity?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution54" id="cloud-connector-destination">
-                            <label for="cloud-connector-destination">Cloud Connector for 1 and Destination Service for 2</label>
+                            <label for="cloud-connector-destination">Cloud Connector for 1 and Destination Service for
+                                2</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution54" id="destination-connectivity">
-                            <label for="destination-connectivity">Destination Service for 1 and Connectivity Service for 2</label>
+                            <label for="destination-connectivity">Destination Service for 1 and Connectivity Service for
+                                2</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution54" id="custom-connectivity">
-                            <label for="custom-connectivity">Custom Connector for 1 and Connectivity Service for 2</label>
+                            <label for="custom-connectivity">Custom Connector for 1 and Connectivity Service for
+                                2</label>
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution54" id="connectivity-cloud" checked>
@@ -1552,14 +1670,17 @@
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution55" id="real-time-processing" checked>
-                            <label for="real-time-processing">Real-time processing and response to business events</label>
+                            <label for="real-time-processing">Real-time processing and response to business
+                                events</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_15_image_2</h2>
                     <div class="question-text">
-                        <p>A customer's sales department is having problems with governmental authorities dealing with transparency around logging and other compliance topics. As an SAP Solution Architect, which SAP BTP service would you recommend for being compliant with regulations?</p>
+                        <p>A customer's sales department is having problems with governmental authorities dealing with
+                            transparency around logging and other compliance topics. As an SAP Solution Architect, which
+                            SAP BTP service would you recommend for being compliant with regulations?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1615,7 +1736,8 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_15_image_4</h2>
                     <div class="question-text">
-                        <p>As a solution architect, you are in a meeting about the design of a new application to manage the delivery process of gc be maintained by the line of business (as opposed to IT).</p>
+                        <p>As a solution architect, you are in a meeting about the design of a new application to manage
+                            the delivery process of gc be maintained by the line of business (as opposed to IT).</p>
                         <p>The following application parameters/features are discussed:</p>
                         <ul>
                             <li>Tracking deliveries in real-time</li>
@@ -1645,58 +1767,76 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_16_image_1</h2>
                     <div class="question-text">
-                        <p>You are a solution architect on a brownfield project where an SAP ECC 6.0 system is being migrated to SAP S/4HANA critical legacy applications must be migrated to the new system. There is some debate on the project team as to the app use:</p>
-                        <p>Application 1 was originally written using classic ABAP. The underlying SAP tables that the application originally used and the data now exists in a new simplified table in SAP S/4HANA Cloud public edition (to which table extension: data needed for the application resides in SAP Ariba. Remote interfaces exist for both to select the data.</p>
-                        <p>Application 2 was originally written using Java and relied upon tables from the SAP ECC 6.0 system as well as S will be retired; however, the SAP S/4HANA Cloud public edition instance has all the data needed for the application select the data,</p>
+                        <p>You are a solution architect on a brownfield project where an SAP ECC 6.0 system is being
+                            migrated to SAP S/4HANA critical legacy applications must be migrated to the new system.
+                            There is some debate on the project team as to the app use:</p>
+                        <p>Application 1 was originally written using classic ABAP. The underlying SAP tables that the
+                            application originally used and the data now exists in a new simplified table in SAP S/4HANA
+                            Cloud public edition (to which table extension: data needed for the application resides in
+                            SAP Ariba. Remote interfaces exist for both to select the data.</p>
+                        <p>Application 2 was originally written using Java and relied upon tables from the SAP ECC 6.0
+                            system as well as S will be retired; however, the SAP S/4HANA Cloud public edition instance
+                            has all the data needed for the application select the data,</p>
                         <p>Which of the following approaches should the customer use?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
                         <div class="option correct">
                             <input type="checkbox" name="solution59" id="rewrite-app2-cloud" checked>
-                            <label for="rewrite-app2-cloud">Rewrite application 2 using the Cloud Application Programming Model</label>
+                            <label for="rewrite-app2-cloud">Rewrite application 2 using the Cloud Application
+                                Programming Model</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution59" id="rewrite-app2-restful">
-                            <label for="rewrite-app2-restful">Rewrite application 2 using the ABAP RESTful Application Programming Model</label>
+                            <label for="rewrite-app2-restful">Rewrite application 2 using the ABAP RESTful Application
+                                Programming Model</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution59" id="rewrite-app1-cloud">
-                            <label for="rewrite-app1-cloud">Rewrite application 1 using the Cloud Application Programming Model</label>
+                            <label for="rewrite-app1-cloud">Rewrite application 1 using the Cloud Application
+                                Programming Model</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution59" id="rewrite-app1-restful" checked>
-                            <label for="rewrite-app1-restful">Rewrite application 1 using the ABAP RESTful Application Programming Model</label>
+                            <label for="rewrite-app1-restful">Rewrite application 1 using the ABAP RESTful Application
+                                Programming Model</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_16_image_2</h2>
                     <div class="question-text">
-                        <p>You are designing a solution on SAP BTP for a large enterprise. The company has existing on-premise SAP ERP systems and plans to extend its capabilities using SAP BTP. The solution should include new cloud-based applications and integration with the existing systems.</p>
+                        <p>You are designing a solution on SAP BTP for a large enterprise. The company has existing
+                            on-premise SAP ERP systems and plans to extend its capabilities using SAP BTP. The solution
+                            should include new cloud-based applications and integration with the existing systems.</p>
                         <p>Which key considerations should you include in your architecture design?</p>
                         <p>There are 3 correct answers to this question.</p>
                     </div>
                     <div class="options">
                         <div class="option correct">
                             <input type="checkbox" name="solution60" id="hybrid-identity" checked>
-                            <label for="hybrid-identity">Implement a hybrid identity management solution to support both on-premise and cloud-based applications</label>
+                            <label for="hybrid-identity">Implement a hybrid identity management solution to support both
+                                on-premise and cloud-based applications</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution60" id="clean-principle" checked>
-                            <label for="clean-principle">Design the architecture to leverage SAP BTP's clean core principle by minimizing custom code in the ERP system</label>
+                            <label for="clean-principle">Design the architecture to leverage SAP BTP's clean core
+                                principle by minimizing custom code in the ERP system</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution60" id="side-by-side-extensions">
-                            <label for="side-by-side-extensions">Utilize SAP BTP's extensibility types to build side-by-side extensions</label>
+                            <label for="side-by-side-extensions">Utilize SAP BTP's extensibility types to build
+                                side-by-side extensions</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution60" id="on-premise-development">
-                            <label for="on-premise-development">Develop the new applications directly within the on-premise environment to reduce complexity</label>
+                            <label for="on-premise-development">Develop the new applications directly within the
+                                on-premise environment to reduce complexity</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution60" id="integration-suite" checked>
-                            <label for="integration-suite">Use SAP Integration Suite for seamless data integration between on-premise and cloud systems</label>
+                            <label for="integration-suite">Use SAP Integration Suite for seamless data integration
+                                between on-premise and cloud systems</label>
                         </div>
                     </div>
                 </div>
@@ -1725,38 +1865,47 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_16_image_4</h2>
                     <div class="question-text">
-                        <p>You are a solution architect helping to design a custom-built application for business users. You must follow these use cases. The application requires data solely from SAP S/4HANA Cloud public edition. The application supports create, read, update, and delete (CRUD) operations. If multiple backend protocols are applicable, the one with the fastest performance is to be used.</p>
+                        <p>You are a solution architect helping to design a custom-built application for business users.
+                            You must follow these use cases. The application requires data solely from SAP S/4HANA Cloud
+                            public edition. The application supports create, read, update, and delete (CRUD) operations.
+                            If multiple backend protocols are applicable, the one with the fastest performance is to be
+                            used.</p>
                         <p>Which of the following combinations would you recommend for the application design?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
                         <div class="option correct">
                             <input type="radio" name="solution62" id="fiori-odata" checked>
-                            <label for="fiori-odata">Frontend: SAP Fiori | Backend: OData service binding on SAP S/4HANA Cloud</label>
+                            <label for="fiori-odata">Frontend: SAP Fiori | Backend: OData service binding on SAP S/4HANA
+                                Cloud</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution62" id="build-idoc">
-                            <label for="build-idoc">Frontend: SAP Build Apps | Backend: IDoc binding on SAP S/4HANA Cloud</label>
+                            <label for="build-idoc">Frontend: SAP Build Apps | Backend: IDoc binding on SAP S/4HANA
+                                Cloud</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution62" id="fiori-rfc">
-                            <label for="fiori-rfc">Frontend: SAP Fiori | Backend: RFC binding on SAP S/4HANA Cloud</label>
+                            <label for="fiori-rfc">Frontend: SAP Fiori | Backend: RFC binding on SAP S/4HANA
+                                Cloud</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution62" id="build-soap">
-                            <label for="build-soap">Frontend: SAP Build Apps | Backend: SOAP binding on SAP S/4HANA Cloud</label>
+                            <label for="build-soap">Frontend: SAP Build Apps | Backend: SOAP binding on SAP S/4HANA
+                                Cloud</label>
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_17_image_1</h2>
                     <div class="question-text">
-                        <p>Which part of the SAP AI architecture is responsible for providing the real-time, business-specific data to enable retrieval?</p>
+                        <p>Which part of the SAP AI architecture is responsible for providing the real-time,
+                            business-specific data to enable retrieval?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1778,7 +1927,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_17_image_2</h2>
                     <div class="question-text">
@@ -1788,27 +1937,32 @@
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution64" id="restricted-toolset">
-                            <label for="restricted-toolset">Restricted toolset, no automation, and limited support</label>
+                            <label for="restricted-toolset">Restricted toolset, no automation, and limited
+                                support</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution64" id="single-purpose">
-                            <label for="single-purpose">Single-purpose integrations, no prebuilt solutions, and minimal security</label>
+                            <label for="single-purpose">Single-purpose integrations, no prebuilt solutions, and minimal
+                                security</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution64" id="isolated-processing">
-                            <label for="isolated-processing">Isolated data processing, manual integrations, and limited API access</label>
+                            <label for="isolated-processing">Isolated data processing, manual integrations, and limited
+                                API access</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution64" id="basic-handling">
-                            <label for="basic-handling">Basic data handling, no API management, and static integration protocols</label>
+                            <label for="basic-handling">Basic data handling, no API management, and static integration
+                                protocols</label>
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution64" id="comprehensive-tools" checked>
-                            <label for="comprehensive-tools">Comprehensive integration tools, prebuilt integrations, and API management</label>
+                            <label for="comprehensive-tools">Comprehensive integration tools, prebuilt integrations, and
+                                API management</label>
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_17_image_3</h2>
                     <div class="question-text">
@@ -1834,7 +1988,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_17_image_4</h2>
                     <div class="question-text">
@@ -1844,11 +1998,13 @@
                     <div class="options">
                         <div class="option">
                             <input type="radio" name="solution66" id="side-by-side-extensions">
-                            <label for="side-by-side-extensions">To guide the creation of side-by-side extensions on SAP BTP</label>
+                            <label for="side-by-side-extensions">To guide the creation of side-by-side extensions on SAP
+                                BTP</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution66" id="deployment-options">
-                            <label for="deployment-options">To define the deployment options for SAP BTP services</label>
+                            <label for="deployment-options">To define the deployment options for SAP BTP
+                                services</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution66" id="ui-design">
@@ -1856,46 +2012,55 @@
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution66" id="structured-approach" checked>
-                            <label for="structured-approach">To provide a structured approach to integrating various SAP and non-SAP systems</label>
+                            <label for="structured-approach">To provide a structured approach to integrating various SAP
+                                and non-SAP systems</label>
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_18_image_1</h2>
                     <div class="question-text">
-                        <p>An enterprise is developing a new application on SAP BTP that will be accessed by a global workforce. The application needs to provide different levels of access based on user roles and locations.</p>
+                        <p>An enterprise is developing a new application on SAP BTP that will be accessed by a global
+                            workforce. The application needs to provide different levels of access based on user roles
+                            and locations.</p>
                         <p>How should the solution be architected?</p>
                         <p>There are 3 correct answers to this question.</p>
                     </div>
                     <div class="options">
                         <div class="option correct">
                             <input type="checkbox" name="solution67" id="geolocation-services" checked>
-                            <label for="geolocation-services">Use SAP BTP's geolocation services to provide location-based access control</label>
+                            <label for="geolocation-services">Use SAP BTP's geolocation services to provide
+                                location-based access control</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution67" id="on-premise-identity">
-                            <label for="on-premise-identity">Integrate with an existing on-premise identity management system</label>
+                            <label for="on-premise-identity">Integrate with an existing on-premise identity management
+                                system</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution67" id="role-based-access" checked>
-                            <label for="role-based-access">Implement role-based access control using SAP BTP's identity management services</label>
+                            <label for="role-based-access">Implement role-based access control using SAP BTP's identity
+                                management services</label>
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution67" id="identity-federation" checked>
-                            <label for="identity-federation">Utilize SAP's cloud-based identity federation services</label>
+                            <label for="identity-federation">Utilize SAP's cloud-based identity federation
+                                services</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" name="solution67" id="custom-access-rules">
-                            <label for="custom-access-rules">Develop custom user access rules within the application</label>
+                            <label for="custom-access-rules">Develop custom user access rules within the
+                                application</label>
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="question-card">
                     <h2 class="subtitle">page_18_image_2</h2>
                     <div class="question-text">
-                        <p>What are some activities in the "Assess your integration strategy" phase of the SAP Integration Solution Advisory Methodology?</p>
+                        <p>What are some activities in the "Assess your integration strategy" phase of the SAP
+                            Integration Solution Advisory Methodology?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -1913,14 +2078,17 @@
                         </div>
                         <div class="option correct">
                             <input type="checkbox" name="solution68" id="simplify-landscapes" checked>
-                            <label for="simplify-landscapes">To simplify landscapes after mergers and acquisitions</label>
+                            <label for="simplify-landscapes">To simplify landscapes after mergers and
+                                acquisitions</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_18_image_3</h2>
                     <div class="question-text">
-                        <p>A client's IT department has half a dozen subaccounts. They are having problems with the administration of the subaccount global account. Which SAP BTP service would you recommend to the customer, to design and develop a custom application to perform?</p>
+                        <p>A client's IT department has half a dozen subaccounts. They are having problems with the
+                            administration of the subaccount global account. Which SAP BTP service would you recommend
+                            to the customer, to design and develop a custom application to perform?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1945,8 +2113,12 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_18_image_4</h2>
                     <div class="question-text">
-                        <p>You are a solution architect and your client has recently completed a merger and acquisition. Your client uses SAP S/4H acquired company is using SAP ECC 6.0. For business and legal reasons, the users of the acquired company cannot ye directory. The acquired users still need access to the custom application.</p>
-                        <p>Given the attached diagram, which solution would you recommend to your client in "1" to enable this access?</p>
+                        <p>You are a solution architect and your client has recently completed a merger and acquisition.
+                            Your client uses SAP S/4H acquired company is using SAP ECC 6.0. For business and legal
+                            reasons, the users of the acquired company cannot ye directory. The acquired users still
+                            need access to the custom application.</p>
+                        <p>Given the attached diagram, which solution would you recommend to your client in "1" to
+                            enable this access?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1956,7 +2128,8 @@
                         </div>
                         <div class="option correct">
                             <input type="radio" name="solution70" id="identity-authentication" checked>
-                            <label for="identity-authentication">SAP Cloud Identity Services - Identity Authentication</label>
+                            <label for="identity-authentication">SAP Cloud Identity Services - Identity
+                                Authentication</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="solution70" id="authorization-trust">
@@ -1964,14 +2137,16 @@
                         </div>
                         <div class="option">
                             <input type="radio" name="solution70" id="identity-provisioning">
-                            <label for="identity-provisioning">SAP Cloud Identity Services - Identity Provisioning</label>
+                            <label for="identity-provisioning">SAP Cloud Identity Services - Identity
+                                Provisioning</label>
                         </div>
                     </div>
                 </div>
                 <div class="question-card">
                     <h2 class="subtitle">page_19_image_1</h2>
                     <div class="question-text">
-                        <p>Which part of the SAP AI architecture is responsible for handling text input from end users?</p>
+                        <p>Which part of the SAP AI architecture is responsible for handling text input from end users?
+                        </p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -1996,7 +2171,8 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_19_image_2</h2>
                     <div class="question-text">
-                        <p>In which phase of the SAP Data and Analytics Advisory Methodology is the target solution architecture developed?</p>
+                        <p>In which phase of the SAP Data and Analytics Advisory Methodology is the target solution
+                            architecture developed?</p>
                         <p>Please choose the correct answer.</p>
                     </div>
                     <div class="options">
@@ -2021,14 +2197,18 @@
                 <div class="question-card">
                     <h2 class="subtitle">page_19_image_3</h2>
                     <div class="question-text">
-                        <p>You are a solution architect and your client needs help in choosing the appropriate SAP solution to use for their application design.</p>
+                        <p>You are a solution architect and your client needs help in choosing the appropriate SAP
+                            solution to use for their application design.</p>
                         <ul>
-                            <li>SAP SuccessFactors will trigger an "event" when employees complete a variety of tasks such as changing their address or updating their W-4 information.</li>
-                            <li>The event will be caught by one of SAP's event solutions and it will trigger (via webhook) either SAP Integration Suite or SAP S/4HANA Cloud as needed.</li>
+                            <li>SAP SuccessFactors will trigger an "event" when employees complete a variety of tasks
+                                such as changing their address or updating their W-4 information.</li>
+                            <li>The event will be caught by one of SAP's event solutions and it will trigger (via
+                                webhook) either SAP Integration Suite or SAP S/4HANA Cloud as needed.</li>
                             <li>The number of events processed is not expected to be high.</li>
                             <li>A cloud solution is preferred.</li>
                         </ul>
-                        <p>Which of the following could be used in place of the "Placeholder Icon" in the attached diagram?</p>
+                        <p>Which of the following could be used in place of the "Placeholder Icon" in the attached
+                            diagram?</p>
                         <p>There are 2 correct answers to this question.</p>
                     </div>
                     <div class="options">
@@ -2054,7 +2234,7 @@
 
             </div>
         </div>
-        
+
     </div>
     <div class="fixed-buttons">
         <button class="btn btn-primary" onclick="$('#questionCarousel').carousel('prev')">Previous</button>
@@ -2065,10 +2245,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const carouselInner = document.getElementById('carouselInner');
             const questionCards = document.querySelectorAll('.question-card');
-            
+
             questionCards.forEach((card, index) => {
                 const carouselItem = document.createElement('div');
                 carouselItem.className = 'carousel-item';
