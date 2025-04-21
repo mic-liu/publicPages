@@ -20,7 +20,6 @@
             font-size: 0.5em;
             color: #666;
             margin-bottom: 15px;
-            display: none;
         }
 
         .question-card {
@@ -2249,6 +2248,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const subtitles = document.querySelectorAll('.subtitle');
+
+            subtitles.forEach((subtitle, index) => {
+                subtitle.textContent = `[Q${index + 1}] ` + subtitle.textContent;
+            });
+
             const carouselInner = document.getElementById('carouselInner');
             const questionCards = document.querySelectorAll('.question-card');
 
