@@ -2265,6 +2265,13 @@
             $('#questionCarousel').carousel({
                 interval: false
             });
+
+            // 获取所有的输入元素
+            const inputs = document.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+            // 禁用所有输入元素
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
         });
     </script>
 </body>
