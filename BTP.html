@@ -2252,18 +2252,38 @@
             const carouselInner = document.getElementById('carouselInner');
             const questionCards = document.querySelectorAll('.question-card');
 
+            // 为每个question-card追加唯一的ID
             questionCards.forEach((card, index) => {
+                card.id = `question-card-${index}`;
                 const carouselItem = document.createElement('div');
                 carouselItem.className = 'carousel-item';
-                if (index === 0) {
-                    carouselItem.classList.add('active');
-                }
                 carouselItem.appendChild(card);
                 carouselInner.appendChild(carouselItem);
             });
 
+            // 从cookie中获取上次展示的卡片ID
+            const lastCardId = getCookie('lastCardId');
+            if (lastCardId) {
+                const lastCard = document.getElementById(lastCardId);
+                if (lastCard) {
+                    lastCard.parentElement.classList.add('active');
+                } else {
+                    carouselInner.firstElementChild.classList.add('active');
+                }
+            } else {
+                carouselInner.firstElementChild.classList.add('active');
+            }
+
             $('#questionCarousel').carousel({
                 interval: false
+            });
+
+            // 记录当前展示的卡片ID到cookie
+            $('#questionCarousel').on('slid.bs.carousel', function () {
+                const activeCard = document.querySelector('.carousel-item.active .question-card');
+                if (activeCard) {
+                    setCookie('lastCardId', activeCard.id, 7);
+                }
             });
 
             // 获取所有的输入元素
@@ -2273,6 +2293,26 @@
                 input.disabled = true;
             });
         });
+
+        // 设置cookie
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        // 获取cookie
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
     </script>
 </body>
 
