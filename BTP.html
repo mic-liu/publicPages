@@ -2543,12 +2543,11 @@
         document.querySelector("#downloadPdf").addEventListener("click", () => {
             const content = document.querySelector("#question-container");
             const questionCards = Array.from(content.querySelectorAll('.question-card'));
-            const batchSize = 40; // 每批次的卡片数量
+            const batchSize = 30; // 每批次的卡片数量
             let batchIndex = 0;
 
             function convertBatch() {
                 const batchContent = document.createElement('div');
-                batchContent.style.display = 'display';
                 document.body.appendChild(batchContent);
 
                 const start = batchIndex * batchSize;
@@ -2556,7 +2555,6 @@
 
                 for (let i = start; i < end; i++) {
                     batchContent.appendChild(questionCards[i].cloneNode(true));
-                    // 添加分页符
                     if (i < end - 1) {
                         const pageBreak = document.createElement('div');
                         pageBreak.style.pageBreakAfter = 'always';
@@ -2569,13 +2567,22 @@
                 const options = {
                     margin: 1,
                     filename: filename,
-                    image: { type: 'JPEG', quality: 0.99 },
+                    image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: { scale: 2, logging: true, backgroundColor: '#f0f0f0' },
                     jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
-                    pagebreak: { mode: ['css', 'legacy'] } // 确保分页符生效
+                    pagebreak: { mode: ['css', 'legacy'] }
                 };
 
-                html2pdf().from(batchContent).set(options).save().then(() => {
+                html2pdf().from(batchContent).set(options).output('blob').then((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+
                     document.body.removeChild(batchContent);
                     batchIndex++;
                     if (batchIndex * batchSize < questionCards.length) {
