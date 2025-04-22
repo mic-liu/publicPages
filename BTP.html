@@ -16,9 +16,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         .question-container {
-            max-width: 800px;
+            max-width: 95vw;
             margin: 20px auto;
-            padding: 20px;
             font-family: Arial, sans-serif;
         }
 
@@ -31,7 +30,7 @@
         .question-card {
             background: #f0f0f0;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 30px;
         }
@@ -57,11 +56,6 @@
             /* 增加底部内边距 */
             margin-bottom: 3px;
             /* 增加底部外边距 */
-        }
-
-        .option:last-child {
-            border-bottom: none;
-            /* 移除最后一个选项的分割线 */
         }
 
         input[type="radio"],
@@ -92,6 +86,11 @@
             /* 增加底部外边距 */
         }
 
+        .option:last-child {
+            border-bottom: none;
+            /* 移除最后一个选项的分割线 */
+        }
+
         .fixed-buttons {
             position: fixed;
             bottom: 0;
@@ -104,12 +103,21 @@
             justify-content: center;
             /* 使用Flexbox居中对齐 */
         }
+
+        .carousel-item {
+            padding: 10px;
+        }
+
+        .page-break {
+            page-break-before: always;
+            /* 在元素前插入分页 */
+        }
     </style>
 </head>
 
 <body>
     <div class="question-container" id="question-container">
-        <div id="questionCarousel" class="carousel slide">
+        <div id="questionCarousel" class="carousel noslide">
             <div class="carousel-inner" id="carouselInner">
 
                 <div class="question-card">
@@ -2420,7 +2428,7 @@
     <div class="fixed-buttons">
         <button class="btn btn-primary" onclick="$('#questionCarousel').carousel('prev')">Previous</button>
         <button class="btn btn-primary ml-2" onclick="$('#questionCarousel').carousel('next')">Next</button>
-        <!-- <button id="downloadPdf" class="btn btn-primary ml-2">Download</button> -->
+        <button id="downloadPdf" class="btn btn-primary ml-2 d-non">Download</button>
     </div>
     <!-- 引入Bootstrap JS和依赖 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -2439,11 +2447,20 @@
 
             // 为每个question-card追加唯一的ID
             questionCards.forEach((card, index) => {
+                index += 1;
                 card.id = `question-card-${index}`;
                 const carouselItem = document.createElement('div');
                 carouselItem.className = 'carousel-item';
                 carouselItem.appendChild(card);
                 carouselInner.appendChild(carouselItem);
+
+                if (index < questionCards.length) {
+                    // 在每个卡片后插入分页符
+                    const pageBreak = document.createElement('div');
+                    pageBreak.className = 'page-break';
+                    card.parentElement.insertBefore(pageBreak, card.nextSibling);
+                }
+
             });
 
             // 从cookie中获取上次展示的卡片ID
@@ -2477,6 +2494,29 @@
             inputs.forEach(input => {
                 input.disabled = true;
             });
+
+            // 为"Previous"按钮绑定点击事件
+            $('.btn-primary[onclick*="prev"]').click(function (event) {
+                event.preventDefault(); // 阻止默认行为
+                // 在这里添加自定义逻辑
+                console.log('Previous button clicked');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 为"Next"按钮绑定点击事件
+            $('.btn-primary[onclick*="next"]').click(function (event) {
+                event.preventDefault(); // 阻止默认行为
+                // 在这里添加自定义逻辑
+                console.log('Next button clicked');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
         });
 
         // 设置cookie
@@ -2502,8 +2542,49 @@
 
         document.querySelector("#downloadPdf").addEventListener("click", () => {
             const content = document.querySelector("#question-container");
-            const filename = "SAP-Question.pdf";
-            html2pdf(content).save(filename);
+            const questionCards = Array.from(content.querySelectorAll('.question-card'));
+            const batchSize = 40; // 每批次的卡片数量
+            let batchIndex = 0;
+
+            function convertBatch() {
+                const batchContent = document.createElement('div');
+                batchContent.style.display = 'display';
+                document.body.appendChild(batchContent);
+
+                const start = batchIndex * batchSize;
+                const end = Math.min(start + batchSize, questionCards.length);
+
+                for (let i = start; i < end; i++) {
+                    batchContent.appendChild(questionCards[i].cloneNode(true));
+                    // 添加分页符
+                    if (i < end - 1) {
+                        const pageBreak = document.createElement('div');
+                        pageBreak.style.pageBreakAfter = 'always';
+                        batchContent.appendChild(pageBreak);
+                    }
+                }
+
+                const filename = `SAP-Question-Part-${batchIndex + 1}.pdf`;
+
+                const options = {
+                    margin: 1,
+                    filename: filename,
+                    image: { type: 'JPEG', quality: 0.99 },
+                    html2canvas: { scale: 2, logging: true, backgroundColor: '#f0f0f0' },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
+                    pagebreak: { mode: ['css', 'legacy'] } // 确保分页符生效
+                };
+
+                html2pdf().from(batchContent).set(options).save().then(() => {
+                    document.body.removeChild(batchContent);
+                    batchIndex++;
+                    if (batchIndex * batchSize < questionCards.length) {
+                        convertBatch(); // 转换下一批
+                    }
+                });
+            }
+
+            convertBatch(); // 开始转换
         });
     </script>
 </body>
